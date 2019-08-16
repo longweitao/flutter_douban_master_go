@@ -14,7 +14,7 @@ class HotWidgetState extends State<HotWidget> {
       children: <Widget>[
         Container(
           height: 80,
-          margin: EdgeInsets.all(15),
+          margin: EdgeInsets.only(top: 15,left: 20,right: 20),
           child: Row(
             children: <Widget>[
               Text('青岛'),
@@ -42,8 +42,31 @@ class HotWidgetState extends State<HotWidget> {
             ],
           ),
         ),
+        Expanded(
+          flex: 1,
+          child: DefaultTabController(
+            length: 2,
+            child: Column(
+              children: <Widget>[
+                Container(
+                  child: TabBar(
+                    unselectedLabelColor: Colors.black12,
+                    labelColor: Colors.black87,
+                    indicatorColor: Colors.black87,
+                    tabs: <Widget>[Tab(text:'电影'),Tab(text: '电视')],
+                  ),
+                ),
+                Expanded(
+                    child: TabBarView(children: <Widget>[
+                      Center(child: Text('movies')),
+                          Center(child: Text('tv'))
+                    ],),
+                )
+              ],
+            ),
+          ),
+        )
       ],
     );
-
   }
 }
